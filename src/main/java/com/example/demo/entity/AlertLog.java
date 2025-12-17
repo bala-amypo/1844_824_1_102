@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import java.time.LocalDateTime;
 @Entity
 public class AlertLog{
-    @id
+    @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     private String warranty;
@@ -29,11 +29,11 @@ public void setwarranty(String warranty){
 public LocalDateTime getsentAt(){
     return sentAt ;
 }
-public void setsentAt(String sentAt){
+public void setsentAt(LocalDateTime sentAt){
     this.sentAt=sentAt;
 }
 public String getmessage(){
-    return id;
+    return message;
 }
 public void setmessage(String message){
     this.message=message;

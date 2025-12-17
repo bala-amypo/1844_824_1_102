@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import java.time.LocalDateTime;
 @Entity
 public class Warranty{
-    @id
+    @Id
    @GeneratedValue(strategy=GenerationType.IDENTITY)
 private Long id;
 private String  user;

@@ -7,7 +7,7 @@ import jakarta.persistence.GenerationType;
 
 @Entity
 public class User{
-    @id
+    @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     private String name;
