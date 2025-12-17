@@ -48,5 +48,17 @@ public void setcategory(String category){
     this.category=category;
 }
 
+public product(Long id, String name,String brand,String modelNumber, String category){
+this.id=id;
+this.name=name;
+this.email.email;
+this.password=password;
+this.role=role;
+
+}
+
+public product(){
+
+}
 
 }
