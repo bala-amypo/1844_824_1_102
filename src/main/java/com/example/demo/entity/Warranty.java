@@ -1,6 +1,6 @@
 package com.example.semo.entity;
 import jakarta.persistence.Entity;
-import jakarta.persistence.id;
+import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GeneratedType;
 import java.time.LocalDate;
@@ -43,7 +43,7 @@ public LocalDate getpurchaseDate(){
 }
 public void setpurchaseDate(LocalDate purchaseDate){
     this.purchaseDate=purchaseDate;
-    
+
 }public LocalDate getexpiryDate(){
  return expiryDate;
 
@@ -59,6 +59,17 @@ public void setserialNumber(String serialNumber){
     this.serialNumber=serialNumber;
 
 }
+
+public  warranty(Long id, String  user,String product,String purchaseDate, String expiryDate,String serialNumber){
+this.id=id;
+this.
+}
+
+
+public warranty(){
+
+}
+
 
 }
 
