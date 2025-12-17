@@ -7,13 +7,15 @@ import jakarta.persistence.GeneratedType;
 
 @Entity
 public class User{
+    @id
+@GeneratedValue(stategy=GenerationType.IDENTITY)
     private long id;
     private String name;
+@Column(unique=true)
     private String email;
     private String password;
     private String role;
-@id
-@GeneratedValue(stategy=GenerationType.IDENTITY)
+
 public void getid(){
     return id;
 }
@@ -28,7 +30,6 @@ public void setname(String name){
     this.name=name;
 }
 
-@Column(unique=true)
 public String getemail(){
  return email;
 
