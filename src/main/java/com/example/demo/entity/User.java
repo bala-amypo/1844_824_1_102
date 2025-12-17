@@ -1,3 +1,10 @@
+package com.example.demo.entity;
+import jar
+
+
+
+
+
 public class User{
     private long id;
     private String name;
@@ -5,7 +12,7 @@ public class User{
     private String password;
     private String role;
 @id
-
+@GeneratedValue(stategy=GenerationType.IDENTITY)
 public void getid(){
     return id;
 }
@@ -19,24 +26,26 @@ public String getname(){
 public void setname(String name){
     this.name=name;
 }
+
+@Column(unique=true)
 public String getemail(){
  return email;
 
 }
 public void setemail(String email){
     this.email=email;
-}public String getemail(){
- return email;
+}public String getpassword(){
+ return password;
 
 }
-public void setname(String name){
-    this.name=name;
-}public String getname(){
- return name;
+public void setpassword(String password){
+    this.password=password;
+}public String getrole(){
+ return role;
 
 }
-public void setname(String name){
-    this.name=name;
+public void setrole(String role){
+    this.role=role;
 }
 
 
