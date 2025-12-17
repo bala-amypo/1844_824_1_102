@@ -1,10 +1,11 @@
 package com.example.demo.entity;
-import jar
+import jakarta.persistence.Entity;
+import jakarta.persistence.id;
+import jakarta.persistence.Unique;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GeneratedType;
 
-
-
-
-
+@Entity
 public class User{
     private long id;
     private String name;
@@ -47,11 +48,5 @@ public void setpassword(String password){
 public void setrole(String role){
     this.role=role;
 }
-
-
-
-
-
-
 
 }
