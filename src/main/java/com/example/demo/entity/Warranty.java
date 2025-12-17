@@ -4,7 +4,6 @@ import jakarta.persistence.id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GeneratedType;
 import java.time.LocalDate;
-
 @Entity
 public class Warranty{
     @idGeneratedValues(strategy=GenerationType.IDENTITY)
@@ -26,29 +25,38 @@ public String getuser(){
 
 }
 public void setuser(String user){
-    this.user.user;
+    this.user=user;
 }
 
 public String getproduct(){
- return brand;
+ return product;
 
 }
 public void setproduct(String product){
     this.product=product;
-}public LocalDate getpurchaseDate(){
+
+}
+public LocalDate getpurchaseDate(){
  return purchaseDate;
 
 }
-public void setpurchaseDate(String purchaseDate){
+public void setpurchaseDate(LocalDate purchaseDate){
     this.purchaseDate=purchaseDate;
-}public String getexpiryDate(){
+}public LocalDate getexpiryDate(){
  return expiryDate;
 
 }
-public void setexpiryDate(Local expiryDate){
+public void setexpiryDate(LocalDate expiryDate){
     this.expiryDate=expiryDate;
 }
+public String getserialNumber(){
+ return serialNumber;
 
+}
+public void setserialNumber(String serialNumber){
+    this.serialNumber=serialNumber;
+
+}
 
 }
 
