@@ -3,16 +3,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GeneratedType;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 @Entity
 public class Warranty{
     @id
-   @GeneratedValue(stategy=GenerationType.IDENTITY)
+   @GeneratedValue(strategy=GenerationType.IDENTITY)
 private Long id;
 private String  user;
 private String product;
-private String purchaseDate;
-private String expiryDate;
+private LocalDateTime purchaseDate;
+private LocalDateTime expiryDate;
 private String serialNumber;
 
 public Long getid(){
@@ -37,18 +37,18 @@ public void setproduct(String product){
     this.product=product;
 
 }
-public LocalDate getpurchaseDate(){
+public LocalDateTime getpurchaseDate(){
  return purchaseDate;
 
 }
-public void setpurchaseDate(LocalDate purchaseDate){
+public void setpurchaseDate(LocalDateTime purchaseDate){
     this.purchaseDate=purchaseDate;
 
-}public LocalDate getexpiryDate(){
+}public LocalDateTime getexpiryDate(){
  return expiryDate;
 
 }
-public void setexpiryDate(LocalDate expiryDate){
+public void setexpiryDate(LocalDateTime expiryDate){
     this.expiryDate=expiryDate;
 }
 public String getserialNumber(){
@@ -60,7 +60,7 @@ public void setserialNumber(String serialNumber){
 
 }
 
-public  Warranty(Long id, String  user,String product,String purchaseDate, String expiryDate,String serialNumber){
+public  Warranty(Long id, String  user,String product,LocalDateTime purchaseDate, LocalDateTime expiryDate,String serialNumber){
 this.id=id;
 this.user=user;
 this.product=product;

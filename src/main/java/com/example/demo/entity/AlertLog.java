@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Entity
 public class AlertLog{
     @id
-@GeneratedValue(stategy=GenerationType.IDENTITY)
+@GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     private String warranty;
     private LocalDateTime sentAt;

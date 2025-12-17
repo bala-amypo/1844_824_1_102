@@ -7,7 +7,7 @@ import jakarta.persistence.GeneratedType;
 @Entity
 public class AlertSchedule{
     @id
-@GeneratedValue(stategy=GenerationType.IDENTITY)
+@GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     private String warranty;
     private Integer daysBeforeExpiry;
