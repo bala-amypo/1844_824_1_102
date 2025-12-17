@@ -15,7 +15,7 @@ private String purchaseDate;
 private String expiryDate;
 private String serialNumber;
 
-public void getid(){
+public Long getid(){
     return id;
 }
 public void setid(long id){

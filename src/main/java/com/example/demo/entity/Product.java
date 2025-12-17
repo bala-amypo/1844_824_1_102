@@ -14,7 +14,7 @@ private String brand;
 private String modelNumber;
 private String category;
 
-public void getid(){
+public Long getid(){
     return id;
 }
 public void setid(long id){

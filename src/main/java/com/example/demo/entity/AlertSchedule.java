@@ -15,7 +15,7 @@ public class AlertSchedule{
     private String password;
     private String role;
 
-public void getid(){
+public Long getid(){
     return id;
 }
 public void setid(long id){
