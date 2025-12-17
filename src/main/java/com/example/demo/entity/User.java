@@ -8,8 +8,22 @@ public class User{
 public void getid(){
     return id;
 }
-public void setid(){
-    return id;
+public void setid(long id){
+    this.id=id;
 }
-public void
+public String getname(){
+ return name;
+
+}
+public void setname(String name){
+    this.name=name;
+}
+public 
+
+
+
+
+
+
+
 }
