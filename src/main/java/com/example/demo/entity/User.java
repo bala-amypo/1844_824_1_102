@@ -1,7 +1,7 @@
 package com.example.demo.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.id;
-import jakarta.persistence.Unique;
+import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GeneratedType;
 

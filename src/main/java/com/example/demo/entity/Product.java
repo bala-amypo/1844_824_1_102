@@ -6,7 +6,8 @@ import jakarta.persistence.GeneratedType;
 
 @Entity
 public class Product{
-    @idGeneratedValues(strategy=GenerationType.IDENTITY)
+    @id
+   @GeneratedValue(stategy=GenerationType.IDENTITY)
 private Long id;
 private String  name;
 private String brand;
