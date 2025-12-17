@@ -4,16 +4,14 @@ import jakarta.persistence.id;
 import jakarta.persistence.Unique;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GeneratedType;
-
 @Entity
 public class AlertSchedule{
     @id
 @GeneratedValue(stategy=GenerationType.IDENTITY)
     private long id;
     private String warranty;
-    private String daysBeforeExpiry;
-    private String password;
-    private String role;
+    private Integer daysBeforeExpiry;
+    private Boolean enabled;
 
 public Long getid(){
     return id;
@@ -21,32 +19,26 @@ public Long getid(){
 public void setid(long id){
     this.id=id;
 }
-public String getname(){
- return name;
+public String getwarranty(){
+ return warranty;
 
 }
-public void setname(String name){
-    this.name=name;
+public void setwarranty(Stringwarranty){
+    this.warranty=warranty;
 }
 
-public String getemail(){
- return email;
+public Integer daysBeforeExpiry(){
+ return daysBeforeExpiry;
 
 }
-public void setemail(String email){
-    this.email=email;
-}public String getpassword(){
- return password;
+public Integer setdaysBeforeExpiry(Integer daysBeforeExpiry){
+    this.daysBeforeExpiry=daysBeforeExpiry;
+}public  Boolean getenabled(){
+ return enabled;
 
 }
-public void setpassword(String password){
-    this.password=password;
-}public String getrole(){
- return role;
-
-}
-public void setrole(String role){
-    this.role=role;
+public void setenabled(Boolean enabled){
+    this.enabled=enabled;
 }
 
 }

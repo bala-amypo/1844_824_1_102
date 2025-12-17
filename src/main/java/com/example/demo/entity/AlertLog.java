@@ -10,7 +10,7 @@ public class AlertLog{
 @GeneratedValue(stategy=GenerationType.IDENTITY)
     private long id;
     private String warranty;
-    private String sentAt;
+    private LocalDateTime sentAt;
     private String message;
  
 
@@ -32,10 +32,11 @@ public LocalDateTime getsentAt(){
 public void setsentAt(String sentAt){
     this.sentAt=sentAt;
 }
-public Long getid(){
+public String getmessage(){
     return id;
 }
-public void setid(long id){
-    this.id=id;
+public void setmessage(String message)){
+    this.message=message;
 }
 
+}
