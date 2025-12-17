@@ -10,9 +10,9 @@ public class AlertLog{
 @GeneratedValue(stategy=GenerationType.IDENTITY)
     private long id;
     private String warranty;
-    private String daysBeforeExpiry;
-    private String password;
-    private String role;
+    private String sentAt;
+    private String message;
+ 
 
 public Long getid(){
     return id;
@@ -20,41 +20,22 @@ public Long getid(){
 public void setid(long id){
     this.id=id;
 }
-public String getname(){
- return name;
-
+public String getwarranty(){
+    return warranty;
 }
-public void setname(String name){
-    this.name=name;
+public void setwarranty(String warranty){
+    this.warranty=warranty;
 }
-
-public String getemail(){
- return email;
-
+public LocalDateTime getsentAt(){
+    return sentAt ;
 }
-public void setemail(String email){
-    this.email=email;
-}public String getpassword(){
- return password;
-
+public void setsentAt(String sentAt){
+    this.sentAt=sentAt;
 }
-public void setpassword(String password){
-    this.password=password;
-}public String getrole(){
- return role;
-
+public Long getid(){
+    return id;
 }
-public void setrole(String role){
-    this.role=role;
+public void setid(long id){
+    this.id=id;
 }
-
-}
-
-
-
-
-
-
-
-
 
