@@ -39,4 +39,15 @@ public void setmessage(String message)){
     this.message=message;
 }
 
+public AlertLog(Long id, String warranty,LocalDateTime sentAt,String message){
+this.id=id;
+this.warranty=warranty;
+this.sentAt=sentAt;
+this.message=message;
+
+}
+
+public AlertLog(){
+
+}
 }

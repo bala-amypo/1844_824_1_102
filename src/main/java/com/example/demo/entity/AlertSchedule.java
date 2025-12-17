@@ -41,15 +41,15 @@ public void setenabled(Boolean enabled){
     this.enabled=enabled;
 }
 
-public user(Long id, String warranty,String dayBeforeExpiry,Boolean enabled){
+public AlertSchedule(Long id, String warranty,String dayBeforeExpiry,Boolean enabled){
 this.id=id;
 this.warranty=warranty;
 this.daysBeforeExpiry=daysBeforeExpiry;
-this.enabled=enablede;
+this.enabled=enabled;
 
 }
 
-public user(){
+public AlertSchedule(){
 
 }
 }
