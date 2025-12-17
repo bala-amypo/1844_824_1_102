@@ -41,6 +41,17 @@ public void setenabled(Boolean enabled){
     this.enabled=enabled;
 }
 
+public user(Long id, String warranty,String dayBeforeExpiry,Boolean enabled){
+this.id=id;
+this.warranty=warranty;
+this.daysBeforeExpiry=daysBeforeExpiry;
+this.enabled=enablede;
+
+}
+
+public user(){
+
+}
 }
 
 
