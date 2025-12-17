@@ -4,6 +4,7 @@ public class User{
     private String email;
     private String password;
     private String role;
+@id
 
 public void getid(){
     return id;
@@ -18,7 +19,25 @@ public String getname(){
 public void setname(String name){
     this.name=name;
 }
-public 
+public String getemail(){
+ return email;
+
+}
+public void setemail(String email){
+    this.email=email;
+}public String getemail(){
+ return email;
+
+}
+public void setname(String name){
+    this.name=name;
+}public String getname(){
+ return name;
+
+}
+public void setname(String name){
+    this.name=name;
+}
 
 
 
