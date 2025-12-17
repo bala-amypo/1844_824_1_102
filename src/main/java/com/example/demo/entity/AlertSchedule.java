@@ -33,7 +33,9 @@ public Integer daysBeforeExpiry(){
 }
 public Integer setdaysBeforeExpiry(Integer daysBeforeExpiry){
     this.daysBeforeExpiry=daysBeforeExpiry;
-}public  Boolean getenabled(){
+}
+
+public  Boolean getenabled(){
  return enabled;
 }
 public void setenabled(Boolean enabled){
