@@ -49,7 +49,7 @@ public void setpassword(String password){
 public void setrole(String role){
     this.role=role;
 }
-public user(Long id, String name,String email,String password, String expiryDate,String role){
+public User(Long id, String name,String email,String password, String expiryDate,String role){
 this.id=id;
 this.name=name;
 this.email=email;
@@ -58,7 +58,7 @@ this.role=role;
 
 }
 
-public user(){
+public User(){
 
 }
 
