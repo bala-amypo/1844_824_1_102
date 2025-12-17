@@ -49,5 +49,18 @@ public void setpassword(String password){
 public void setrole(String role){
     this.role=role;
 }
+public  warranty(Long id, String  user,String product,String purchaseDate, String expiryDate,String serialNumber){
+this.id=id;
+this.name=name;
+this.email.email;
+this.purchaseDate=purchaseDate;
+this.serialNumber=serialNumber;
+this.expiryDate=expiryDate;
+}
+
+public warranty(){
+
+}
+
 
 }

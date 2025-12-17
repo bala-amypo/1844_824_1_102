@@ -62,14 +62,16 @@ public void setserialNumber(String serialNumber){
 
 public  warranty(Long id, String  user,String product,String purchaseDate, String expiryDate,String serialNumber){
 this.id=id;
-this.
+this.user=user;
+this.product=product;
+this.purchaseDate=purchaseDate;
+this.serialNumber=serialNumber;
+this.expiryDate=expiryDate;
 }
-
 
 public warranty(){
 
 }
-
 
 }
 
