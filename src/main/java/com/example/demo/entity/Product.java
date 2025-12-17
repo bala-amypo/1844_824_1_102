@@ -60,5 +60,4 @@ this.category=category;
 public product(){
 
 }
-
 }

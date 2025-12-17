@@ -44,7 +44,6 @@ this.id=id;
 this.warranty=warranty;
 this.sentAt=sentAt;
 this.message=message;
-
 }
 
 public AlertLog(){
