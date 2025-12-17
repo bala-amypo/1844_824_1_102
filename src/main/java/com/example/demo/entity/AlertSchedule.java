@@ -23,7 +23,7 @@ public String getwarranty(){
  return warranty;
 
 }
-public void setwarranty(Stringwarranty){
+public void setwarranty(String warranty){
     this.warranty=warranty;
 }
 
@@ -35,7 +35,6 @@ public Integer setdaysBeforeExpiry(Integer daysBeforeExpiry){
     this.daysBeforeExpiry=daysBeforeExpiry;
 }public  Boolean getenabled(){
  return enabled;
-
 }
 public void setenabled(Boolean enabled){
     this.enabled=enabled;

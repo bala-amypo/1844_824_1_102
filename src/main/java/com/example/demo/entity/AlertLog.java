@@ -35,7 +35,7 @@ public void setsentAt(String sentAt){
 public String getmessage(){
     return id;
 }
-public void setmessage(String message)){
+public void setmessage(String message){
     this.message=message;
 }
 
