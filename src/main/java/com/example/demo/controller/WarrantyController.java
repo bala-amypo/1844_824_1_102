@@ -11,16 +11,22 @@ import com.example.collectiondb.service.WarrantyService;
 
 @RestController
 public class WarrantyController {
-    
     @Autowired
-    studentService stuser;
+    WarrantyService warranty;
 
-    @PostMapping("/path")
-    public studentEntity studatas(@RequestBody studentEntity student) {
-        return stuser.saveData(student);
+
+    @PostMapping("/register")
+    public AuditTrailRecord addAuditTrailRecord(@RequestBody AuditTrailRecord atr){
+        return atrs.logEvent(atr);
     }
-    
+
+    @GetMapping("/")
+    public int first(Long credentialId){
+        return atrs.getLogs();
+    }
+
+    @GetMapping
+    public List<AuditTrailRecord> second(){
+        return atrs.getAllLogs();
+    }
 }
-
-
-studentController.java
