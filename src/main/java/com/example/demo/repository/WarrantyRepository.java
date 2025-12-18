@@ -6,7 +6,7 @@ import com.example.demo.entity.User;
  import java.util.Long;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long>{
+public interface WarrantyRepository extends JpaRepository<Warranty, Long>{
 
 
 }
