@@ -33,11 +33,12 @@ public class WarrantyController {
 
     }
 
-    @GetMapping("/warrantyId")
-   public Warranty 
+    @GetMapping("/user/{userId}")
+   public list< Warranty >
 
     @GetMapping("/userId")
-    public List<AuditTrailRecord> second(){
-        return atrs.getAllLogs();
+   getUserWarranties(@PathVariable){
+        return 
+        warrantyService.getWarrantiesByUser(userId);
     }
 }
