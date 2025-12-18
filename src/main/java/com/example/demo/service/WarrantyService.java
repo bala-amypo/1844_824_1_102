@@ -6,9 +6,9 @@ import com.example.demo.entity.Warranty;
 
 @Service
 public class WarrantyService {
-   Warranty registerWarranty(Long userId,Long productId,Warranty warranty)
-   Warranty getWarranty(Long warrantyId)
-   List<Warranty
+   Warranty registerWarranty(Long userId,Long productId,Warranty warranty);
+   Warranty getWarranty(Long warrantyId);
+   List<Warranty>getUserWarranties(Long userId);
     
 }
 
