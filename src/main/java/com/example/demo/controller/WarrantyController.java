@@ -12,20 +12,20 @@ import com.example.collectiondb.service.WarrantyService;
 @RestController
 public class WarrantyController {
     @Autowired
-    WarrantyService warranty;
+    WarrantyService w;
 
 
     @PostMapping("/register")
-    public AuditTrailRecord addAuditTrailRecord(@RequestBody AuditTrailRecord atr){
+    public Warranty addAuditTrailRecord(@RequestBody AuditTrailRecord atr){
         return atrs.logEvent(atr);
     }
 
-    @GetMapping("/")
+    @GetMapping("/warrantyId")
     public int first(Long credentialId){
         return atrs.getLogs();
     }
 
-    @GetMapping
+    @GetMapping("/userId")
     public List<AuditTrailRecord> second(){
         return atrs.getAllLogs();
     }
