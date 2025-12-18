@@ -25,7 +25,7 @@ public class WarrantyController {
     }
 
     @GetMapping("/warrantyId")
-   public Warranty
+   public Warranty 
 
     @GetMapping("/userId")
     public List<AuditTrailRecord> second(){
