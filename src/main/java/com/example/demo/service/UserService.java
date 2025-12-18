@@ -5,14 +5,14 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.example.collectiondb.entity.UserEntity;
+import com.example.demo.entity.UserEntity;
 
 @Service
 public class UserService {
     
-    Map<Long, studentEntity> studentData=new HashMap<>();
+    Map<Long, user> studentData=new HashMap<>();
 
-    public studentEntity saveData(studentEntity student){
+    public user saveData(user student){
         studentData.put(student.getId(), student);
         return student;
     }
