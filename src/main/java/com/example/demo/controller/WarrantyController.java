@@ -23,6 +23,15 @@ public class WarrantyController {
                w.registerWarranty(userId,productId);
 
     }
+    
+    @PostMapping("/register/{userId}/{productId}")
+    public Warranty registerWarranty(
+        @PathVariable Long userId,
+        @PathVariable Long productId){
+        return 
+               w.registerWarranty(userId,productId);
+
+    }
 
     @GetMapping("/warrantyId")
    public Warranty 
