@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 @Entity
@@ -42,7 +41,7 @@ public void setenabled(Boolean enabled){
     this.enabled=enabled;
 }
 
-public AlertSchedule(Long id, String warranty,String dayBeforeExpiry,Boolean enabled){
+public AlertSchedule(Long id, String warranty,Integer dayBeforeExpiry,Boolean enabled){
 this.id=id;
 this.warranty=warranty;
 this.daysBeforeExpiry=daysBeforeExpiry;
@@ -53,6 +52,7 @@ this.enabled=enabled;
 public AlertSchedule(){
 
 }
+
 }
 
 
