@@ -9,7 +9,7 @@ public class AlertSchedule{
 @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     private String warranty;
-    private Integer daysBeforeExpiry;
+    private int daysBeforeExpiry;
     private Boolean enabled;
 
 public Long getid(){
@@ -26,11 +26,11 @@ public void setwarranty(String warranty){
     this.warranty=warranty;
 }
 
-public Integer daysBeforeExpiry(){
+public int getdaysBeforeExpiry(){
  return daysBeforeExpiry;
 
 }
-public Integer setdaysBeforeExpiry(Integer daysBeforeExpiry){
+public void setdaysBeforeExpiry(int daysBeforeExpiry){
     this.daysBeforeExpiry=daysBeforeExpiry;
 }
 
@@ -41,7 +41,7 @@ public void setenabled(Boolean enabled){
     this.enabled=enabled;
 }
 
-public AlertSchedule(Long id, String warranty,Integer dayBeforeExpiry,Boolean enabled){
+public AlertSchedule(Long id, String warranty,int dayBeforeExpiry,Boolean enabled){
 this.id=id;
 this.warranty=warranty;
 this.daysBeforeExpiry=daysBeforeExpiry;
