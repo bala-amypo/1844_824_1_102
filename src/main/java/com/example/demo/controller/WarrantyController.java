@@ -8,37 +8,28 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.collectiondb.entity.Warranty;
 import com.example.collectiondb.service.WarrantyService;
 
-
 @RestController
+@RequestMapping("/warranties")
 public class WarrantyController {
-    @Autowired
-    WarrantyService w;
 
+    @Autowired
+    private WarrantyService warrantyService;
 
     @PostMapping("/register/{userId}/{productId}")
     public Warranty registerWarranty(
-        @PathVariable Long userId,
-        @PathVariable Long productId){
-        return 
-               w.registerWarranty(userId,productId);
+            @PathVariable Long userId,
+            @PathVariable Long productId) {
 
+        return warrantyService.registerWarranty(userId, productId);
     }
-    
-    @PostMapping("/warrantyId")
-    public Warranty getWarranty(
-        @PathVariable Long WarrantyId
-      {
-        return 
-               w.registerWarranty(warrantyId);
 
+    @GetMapping("/{warrantyId}")
+    public Warranty getWarranty(@PathVariable Long warrantyId) {
+        return warrantyService.getWarrantyById(warrantyId);
     }
 
     @GetMapping("/user/{userId}")
-   public list< Warranty >
-
-    @GetMapping("/userId")
-   getUserWarranties(@PathVariable){
-        return 
-        warrantyService.getWarrantiesByUser(userId);
+    public List<Warranty> getUserWarranties(@PathVariable Long userId) {
+        return warrantyService.getWarrantiesByUser(userId);
     }
 }
