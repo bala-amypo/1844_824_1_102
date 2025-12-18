@@ -16,14 +16,16 @@ public class WarrantyController {
 
 
     @PostMapping("/register/{userId}/{productId}")
-    public Warranty registerWarranty{
-        return atrs.logEvent(atr);
+    public Warranty registerWarranty(
+        @PathVariable Long userId,
+        @PathVariable Long productId){
+        return 
+               w.registerWarranty(userId,productId);
+
     }
 
     @GetMapping("/warrantyId")
-    public int first(Long credentialId){
-        return atrs.getLogs();
-    }
+   public Warranty
 
     @GetMapping("/userId")
     public List<AuditTrailRecord> second(){
