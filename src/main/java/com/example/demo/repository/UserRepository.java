@@ -3,7 +3,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.User;
-import java.util.Lon;
+ import java.util.Long;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
@@ -15,4 +15,3 @@ public interface UserRepository extends JpaRepository<User, Long>{
 
 
 
-User.java
