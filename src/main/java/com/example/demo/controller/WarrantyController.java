@@ -15,8 +15,8 @@ public class WarrantyController {
     WarrantyService w;
 
 
-    @PostMapping("/register")
-    public Warranty addAuditTrailRecord(@RequestBody AuditTrailRecord atr){
+    @PostMapping("/register/{userId}/{productId}")
+    public Warranty registerWarranty{
         return atrs.logEvent(atr);
     }
 
