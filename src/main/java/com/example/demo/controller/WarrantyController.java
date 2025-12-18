@@ -25,11 +25,11 @@ public class WarrantyController {
     }
     
     @PostMapping("/warrantyId")
-    public Warranty grtWarranty(
+    public Warranty getWarranty(
         @PathVariable Long WarrantyId
-        @PathVariable Long productId){
+      {
         return 
-               w.registerWarranty(userId,productId);
+               w.registerWarranty(warrantyId);
 
     }
 
