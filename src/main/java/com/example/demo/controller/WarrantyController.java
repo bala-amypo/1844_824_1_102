@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.collectiondb.entity.Warranty;
 import com.example.collectiondb.service.WarrantyService;
 
+
+
 @RestController
 @RequestMapping("/warranties")
 public class WarrantyController {
