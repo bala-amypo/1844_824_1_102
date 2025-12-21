@@ -15,25 +15,24 @@ public class ProductController {
         this.service = service;
     }
 
-    // POST - add a product
+   
     @PostMapping
     public Product create(@RequestBody Product product) {
         return service.save(product);
     }
 
-    // GET - get all products
+    
     @GetMapping
     public List<Product> getAll() {
         return service.getAll();
     }
 
-    // GET - get one product
+  
     @GetMapping("/{id}")
     public Product getById(@PathVariable Long id) {
         return service.getById(id);
     }
 
-    // DELETE - remove product
     @DeleteMapping("/{id}")
     public String delete(@PathVariable Long id) {
         return service.delete(id);
