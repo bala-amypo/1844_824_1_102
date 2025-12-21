@@ -1,37 +1,53 @@
-// package com.example.demob.controller;
+package com.example.demo.controller;
 
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.RequestBody;
-// import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+import com.example.demo.entity.Warranty;
+import com.example.demo.service.WarrantyService;
 
-// import com.example.collectiondb.entity.Warranty;
-// import com.example.collectiondb.service.WarrantyService;
+@RestController
+@RequestMapping("/warranties")
+public class WarrantyController {
 
+    private final WarrantyService service;
 
+    public WarrantyController(WarrantyService service) {
+        this.service = service;
+    }
 
-// @RestController
-// @RequestMapping("/warranties")
-// public class WarrantyController {
+    // POST - register a warranty
+    @PostMapping
+    public Warranty create(@RequestBody Warranty warranty) {
+        return service.save(warranty);
+    }
 
-//     @Autowired
-//     private WarrantyService warrantyService;
+    // GET - all warranties
+    @GetMapping
+    public List<Warranty> getAll() {
+        return service.getAll();
+    }
 
-//     @PostMapping("/register/{userId}/{productId}")
-//     public Warranty registerWarranty(
-//             @PathVariable Long userId,
-//             @PathVariable Long productId) {
+    // GET - single warranty
+    @GetMapping("/{id}")
+    public Warranty getById(@PathVariable Long id) {
+        return service.getById(id);
+    }
 
-//         return warrantyService.registerWarranty(userId, productId);
-//     }
+    // DELETE - remove warranty
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable Long id) {
+        return service.delete(id);
+    }
 
-//     @GetMapping("/{warrantyId}")
-//     public Warranty getWarranty(@PathVariable Long warrantyId) {
-//         return warrantyService.getWarrantyById(warrantyId);
-//     }
+    // Optional: get warranties by user
+    @GetMapping("/user/{user}")
+    public List<Warranty> getByUser(@PathVariable String user) {
+        return service.getByUser(user);
+    }
 
-//     @GetMapping("/user/{userId}")
-//     public List<Warranty> getUserWarranties(@PathVariable Long userId) {
-//         return warrantyService.getWarrantiesByUser(userId);
-//     }
-// }
+    // Optional: get warranty by serial number
+    @GetMapping("/serial/{serialNumber}")
+    public Warranty getBySerial(@PathVariable String serialNumber) {
+        return service.getBySerialNumber(serialNumber);
+    }
+}
