@@ -1,16 +1,19 @@
-package com.example.demo.service;
-import org.springframework.stereotype.Service;
-import java.util.List;
-import com.example.demo.entity.Warranty;
+// package com.example.demo.service;
+// import org.springframework.stereotype.Service;
+// import java.util.List;
+// import com.example.demo.entity.Warranty;
 
 
-@Service
-public class WarrantyService {
-   Warranty registerWarranty(Long userId,Long productId,Warranty warranty);
-   Warranty getWarranty(Long warrantyId);
-   List<Warranty>getUserWarranties(Long userId);
+// @Service
+// public class WarrantyService {
+//    Warranty registerWarranty(Long userId,Long productId,Warranty warranty);
+//    Warranty getWarranty(Long warrantyId);
+//    List<Warranty>getUserWarranties(Long userId);
     
-}
+//
+//  / 
+
+
 
 
 
