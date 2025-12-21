@@ -1,27 +1,47 @@
-// package com.example.collectiondb.controller;
+package com.example.demo.controller;
 
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.RequestBody;
-// import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+import com.example.demo.entity.User;
+import com.example.demo.service.UserService;
 
-// import com.example.collectiondb.entity.studentEntity;
-// import com.example.collectiondb.service.studentService;
+@RestController
+@RequestMapping("/users")
+public class AuthController {
 
+    private final UserService service;
 
-// @RestController
-// public class studentController {
-    
-//     @Autowired
-//     studentService stuser;
+    public AuthController(UserService service) {
+        this.service = service;
+    }
 
-//     @PostMapping("/path")
-//     public studentEntity studatas(@RequestBody studentEntity student) {
-//         return stuser.saveData(student);
-//     }
-    
-// }
+    // POST - add new user
+    @PostMapping
+    public User create(@RequestBody User user) {
+        return service.save(user);
+    }
 
+    // GET - all users
+    @GetMapping
+    public List<User> getAll() {
+        return service.getAll();
+    }
 
+    // GET - single user by ID
+    @GetMapping("/{id}")
+    public User getById(@PathVariable Long id) {
+        return service.getById(id);
+    }
 
-// studentController.java
+    // DELETE - remove user
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable Long id) {
+        return service.delete(id);
+    }
+
+    // Optional: GET by email
+    @GetMapping("/email/{email}")
+    public User getByEmail(@PathVariable String email) {
+        return service.getByEmail(email);
+    }
+}

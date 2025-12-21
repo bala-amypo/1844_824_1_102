@@ -1,19 +1,37 @@
-// package com.example.demo.service;
+package com.example.demo.service;
 
-// import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Service;
+import java.util.List;
+import com.example.demo.entity.User;
+import com.example.demo.repository.UserRepository;
 
-// import com.example.demo.entity.User;
+@Service
+public class UserService {
 
-// @Service
-// public class UserService {
-//    void User register(User user);
-//      String User findbyEmail(String email);}
-   
-    
-// 
+    private final UserRepository repo;
 
+    public UserService(UserRepository repo) {
+        this.repo = repo;
+    }
 
+    public User save(User user) {
+        return repo.save(user);
+    }
 
+    public List<User> getAll() {
+        return repo.findAll();
+    }
 
+    public User getById(Long id) {
+        return repo.findById(id).orElse(null);
+    }
 
+    public String delete(Long id) {
+        repo.deleteById(id);
+        return "Deleted Successfully";
+    }
 
+    public User getByEmail(String email) {
+        return repo.findByEmail(email);
+    }
+}
