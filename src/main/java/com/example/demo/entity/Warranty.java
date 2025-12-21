@@ -1,5 +1,4 @@
 package com.example.demo.entity;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -19,7 +18,7 @@ public class Warranty {
     private LocalDateTime expiryDate;
     private String serialNumber;
 
-    // --- Getters & Setters ---
+   
     public Long getId() {
         return id;
     }
@@ -62,7 +61,7 @@ public class Warranty {
         this.serialNumber = serialNumber;
     }
 
-    // --- Constructor with fields ---
+   
     public Warranty(Long id, String user, String product, LocalDateTime purchaseDate,
                     LocalDateTime expiryDate, String serialNumber) {
         this.id = id;
@@ -73,6 +72,6 @@ public class Warranty {
         this.serialNumber = serialNumber;
     }
 
-    // --- Default constructor ---
+    
     public Warranty() {}
 }

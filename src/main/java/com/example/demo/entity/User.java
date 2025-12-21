@@ -22,7 +22,7 @@ public class User {
 
     private String role;
 
-    // --- Getters & Setters ---
+   
     public Long getId() {
         return id;
     }
@@ -58,7 +58,7 @@ public class User {
         this.role = role;
     }
 
-    // --- Constructor with fields ---
+ 
     public User(Long id, String name, String email, String password, String role) {
         this.id = id;
         this.name = name;
@@ -67,6 +67,5 @@ public class User {
         this.role = role;
     }
 
-    // --- Default constructor ---
     public User() {}
 }

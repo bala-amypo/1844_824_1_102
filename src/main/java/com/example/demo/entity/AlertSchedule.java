@@ -16,7 +16,6 @@ public class AlertSchedule {
     private int daysBeforeExpiry;
     private Boolean enabled;
 
-    // --- Getters & Setters ---
     public Long getId() {
         return id;
     }
@@ -45,7 +44,6 @@ public class AlertSchedule {
         this.enabled = enabled;
     }
 
-    // --- Constructor with fields ---
     public AlertSchedule(Long id, String warranty, int daysBeforeExpiry, Boolean enabled) {
         this.id = id;
         this.warranty = warranty;
@@ -53,6 +51,6 @@ public class AlertSchedule {
         this.enabled = enabled;
     }
 
-    // --- Default constructor ---
+   
     public AlertSchedule() {}
 }

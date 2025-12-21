@@ -45,7 +45,7 @@ public class AlertLog {
         this.message = message;
     }
 
-    // Constructors
+   
     public AlertLog(Long id, String warranty, LocalDateTime sentAt, String message) {
         this.id = id;
         this.warranty = warranty;
