@@ -16,7 +16,7 @@ public class AlertLog {
     private LocalDateTime sentAt;
     private String message;
 
-    // Getters and Setters (correct method names)
+   
     public Long getId() {
         return id;
     }
