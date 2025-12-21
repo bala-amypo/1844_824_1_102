@@ -1,9 +1,7 @@
 package com.example.demo.controller;
-
 import com.example.demo.entity.AlertLog;
 import com.example.demo.service.AlertLogService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
