@@ -31,7 +31,7 @@ public class WarrantyService {
         return "Deleted Successfully";
     }
 
-    // Optional: helper methods
+   
     public List<Warranty> getByUser(String user) {
         return repo.findByUser(user);
     }
