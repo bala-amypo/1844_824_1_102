@@ -1,53 +1,58 @@
 package com.example.demo.entity;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import java.time.LocalDateTime;
+
 @Entity
-public class AlertLog{
+public class AlertLog {
+
     @Id
-@GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String warranty;
     private LocalDateTime sentAt;
     private String message;
- 
 
-public Long getid(){
-    return id;
-}
-public void setid(long id){
-    this.id=id;
-}
-public String getwarranty(){
-    return warranty;
-}
-public void setwarranty(String warranty){
-    this.warranty=warranty;
-}
-public LocalDateTime getsentAt(){
-    return sentAt ;
-}
-public void setsentAt(LocalDateTime sentAt){
-    this.sentAt=sentAt;
-}
-public String getmessage(){
-    return message;
-}
-public void setmessage(String message){
-    this.message=message;
-}
+    // Getters and Setters (correct method names)
+    public Long getId() {
+        return id;
+    }
+    public void setId(long id) {
+        this.id = id;
+    }
 
-public AlertLog(Long id, String warranty,LocalDateTime sentAt,String message){
-this.id=id;
-this.warranty=warranty;
-this.sentAt=sentAt;
-this.message=message;
-}
+    public String getWarranty() {
+        return warranty;
+    }
+    public void setWarranty(String warranty) {
+        this.warranty = warranty;
+    }
 
-public AlertLog(){
+    public LocalDateTime getSentAt() {
+        return sentAt;
+    }
+    public void setSentAt(LocalDateTime sentAt) {
+        this.sentAt = sentAt;
+    }
 
-}
-}
+    public String getMessage() {
+        return message;
+    }
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
+    // Constructors
+    public AlertLog(Long id, String warranty, LocalDateTime sentAt, String message) {
+        this.id = id;
+        this.warranty = warranty;
+        this.sentAt = sentAt;
+        this.message = message;
+    }
+
+    public AlertLog() {
+    }
+}

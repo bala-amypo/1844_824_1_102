@@ -1,17 +1,29 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.AlertLog;
+import com.example.demo.repository.AlertLogRepository;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-public interface AlertLogService {
+@Service
+public class AlertLogService {
 
-    AlertLog createAlert(AlertLog alert);
+    private final AlertLogRepository repo;
 
-    AlertLog getAlertById(Long id);
+    public AlertLogService(AlertLogRepository repo) {
+        this.repo = repo;
+    }
 
-    List<AlertLog> getAllAlerts();
+    public AlertLog addLog(AlertLog log) {
+        return repo.save(log);
+    }
 
-    AlertLog updateAlert(Long id, AlertLog alert);
+    public AlertLog getLog(Long id) {
+        return repo.findById(id).orElse(null);
+    }
 
-    void deleteAlert(Long id);
+    public List<AlertLog> getAllLogs() {
+        return repo.findAll();
+    }
 }
