@@ -1,18 +1,13 @@
-// package com.example.demo.repository;
-// import org.springframework.data.jpa.repository.JpaRepository;
-// import org.springframework.stereotype.Repository;
+package com.example.demo.repository;
 
-// import com.example.demo.entity.User;
-//  import java.util.Long;
+import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.demo.entity.Warranty;
 
-// @Repository
-// public interface WarrantyRepository extends JpaRepository<Warranty, Long>{
+import java.util.List;
 
+public interface WarrantyRepository extends JpaRepository<Warranty, Long> {
 
-// 
-// /}
-
-
-
-
-
+    // Optional helper methods
+    List<Warranty> findByUser(String user);
+    Warranty findBySerialNumber(String serialNumber);
+}
