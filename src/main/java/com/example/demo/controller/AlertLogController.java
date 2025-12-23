@@ -1,11 +1,7 @@
 package com.example.demo.controller;
 import com.example.demo.entity.AlertLog;
 import com.example.demo.service.AlertLogService;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestM;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("/logs")

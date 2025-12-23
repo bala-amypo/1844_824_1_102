@@ -1,12 +1,8 @@
 package com.example.demo.controller;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import com.example.demo.entity.Product;
 import com.example.demo.service.ProductService;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
 
 @RestController
 @RequestMapping("/products")
