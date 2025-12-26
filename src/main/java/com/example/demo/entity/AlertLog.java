@@ -56,3 +56,4 @@ public class AlertLog {
         this.message = message;
     }
 }
+                                                    
