@@ -38,9 +38,8 @@ public class AlertLogServiceImpl implements AlertLogService {
 
     @Override
     public List<AlertLog> getLogs(Long warrantyId) {
-        // FIX: Only throw "Warranty not found" if the warranty DOES NOT exist.
-        // If it exists, return the logs.
-        if (!warrantyRepository.existsById(warrantyId)) {
+        // FIX: Use findById because the test stubs findById, not existsById
+        if (warrantyRepository.findById(warrantyId).isEmpty()) {
             throw new RuntimeException("Warranty not found");
         }
         return alertLogRepository.findByWarrantyId(warrantyId);

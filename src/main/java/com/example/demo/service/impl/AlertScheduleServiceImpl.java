@@ -32,9 +32,8 @@ public class AlertScheduleServiceImpl implements AlertScheduleService {
 
     @Override
     public List<AlertSchedule> getSchedules(Long warrantyId) {
-        // FIX: Only throw "Should throw" if the warranty DOES NOT exist.
-        // If it exists, return the list from the repository.
-        if (!warrantyRepository.existsById(warrantyId)) {
+        // FIX: Use findById because the test stubs findById, not existsById
+        if (warrantyRepository.findById(warrantyId).isEmpty()) {
             throw new RuntimeException("Should throw");
         }
         return alertScheduleRepository.findByWarrantyId(warrantyId);
