@@ -1,10 +1,7 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import java.time.LocalDateTime;
+import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Warranty {
@@ -13,73 +10,84 @@ public class Warranty {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String user;
-    private String product;
-    private LocalDateTime purchaseDate;
-    private LocalDateTime expiryDate;
-    private String serialNumber;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private String warrantyNumber;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+    // ----------------- GETTERS -----------------
 
     public Long getId() {
         return id;
     }
 
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public String getWarrantyNumber() {
+        return warrantyNumber;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    // ----------------- SETTERS -----------------
+
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getUser() {
-        return user;
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 
-    // FIXED
-    public void setUser(String user) {
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public void setWarrantyNumber(String warrantyNumber) {
+        this.warrantyNumber = warrantyNumber;
+    }
+
+    // ⭐ FIXED: These were missing ⭐
+    public void setUser(User user) {
         this.user = user;
     }
 
-    public String getProduct() {
-        return product;
-    }
-
-    // FIXED
-    public void setProduct(String product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
 
-    public LocalDateTime getPurchaseDate() {
-        return purchaseDate;
-    }
+    // ❌ DO NOT CREATE setWarranty() (invalid)
 
-    public void setPurchaseDate(LocalDateTime purchaseDate) {
-        this.purchaseDate = purchaseDate;
-    }
+    // ----------------- CONSTRUCTORS -----------------
 
-    public LocalDateTime getExpiryDate() {
-        return expiryDate;
-    }
+    public Warranty() {}
 
-    public void setExpiryDate(LocalDateTime expiryDate) {
-        this.expiryDate = expiryDate;
-    }
-
-    public String getSerialNumber() {
-        return serialNumber;
-    }
-
-    public void setSerialNumber(String serialNumber) {
-        this.serialNumber = serialNumber;
-    }
-
-    public Warranty(Long id, String user, String product,
-                    LocalDateTime purchaseDate, LocalDateTime expiryDate,
-                    String serialNumber) {
+    public Warranty(Long id, LocalDate startDate, LocalDate endDate,
+                    String warrantyNumber, User user, Product product) {
         this.id = id;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.warrantyNumber = warrantyNumber;
         this.user = user;
         this.product = product;
-        this.purchaseDate = purchaseDate;
-        this.expiryDate = expiryDate;
-        this.serialNumber = serialNumber;
-    }
-
-    public Warranty() {
     }
 }
