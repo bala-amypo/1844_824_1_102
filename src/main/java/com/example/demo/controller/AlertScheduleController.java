@@ -1,40 +1,40 @@
-package com.example.demo.controller;
-import org.springframework.web.bind.annotation.*;
-import java.util.List;
-import com.example.demo.entity.AlertSchedule;
-import com.example.demo.service.AlertScheduleService;
+// package com.example.demo.controller;
+// import org.springframework.web.bind.annotation.*;
+// import java.util.List;
+// import com.example.demo.entity.AlertSchedule;
+// import com.example.demo.service.AlertScheduleService;
 
-@RestController
-@RequestMapping("/alertSchedule")
-public class AlertScheduleController {
+// @RestController
+// @RequestMapping("/alertSchedule")
+// public class AlertScheduleController {
 
-    private final AlertScheduleService service;
+//     private final AlertScheduleService service;
 
-    public AlertScheduleController(AlertScheduleService service) {
-        this.service = service;
-    }
-
-    
-    @PostMapping
-    public AlertSchedule create(@RequestBody AlertSchedule schedule) {
-        return service.save(schedule);
-    }
+//     public AlertScheduleController(AlertScheduleService service) {
+//         this.service = service;
+//     }
 
     
-    @GetMapping
-    public List<AlertSchedule> getAll() {
-        return service.getAll();
-    }
+//     @PostMapping
+//     public AlertSchedule create(@RequestBody AlertSchedule schedule) {
+//         return service.save(schedule);
+//     }
 
     
-    @GetMapping("/{id}")
-    public AlertSchedule getById(@PathVariable Long id) {
-        return service.getById(id);
-    }
+//     @GetMapping
+//     public List<AlertSchedule> getAll() {
+//         return service.getAll();
+//     }
+
+    
+//     @GetMapping("/{id}")
+//     public AlertSchedule getById(@PathVariable Long id) {
+//         return service.getById(id);
+//     }
 
    
-    @DeleteMapping("/{id}")
-    public String delete(@PathVariable Long id) {
-        return service.delete(id);
-    }
-}
+//     @DeleteMapping("/{id}")
+//     public String delete(@PathVariable Long id) {
+//         return service.delete(id);
+//     }
+// }
