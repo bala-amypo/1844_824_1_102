@@ -1,17 +1,14 @@
 package com.example.demo.security;
 
 import com.example.demo.config.JwtProperties;
-import org.springframework.stereotype.Component;
+import java.util.HashMap;
+import java.util.Map;
 
-@Component
 public class JwtTokenProvider {
 
-    public JwtTokenProvider() {
-    }
+    public JwtTokenProvider() {}
 
-    // ✅ ADD THIS
-    public JwtTokenProvider(JwtProperties properties) {
-    }
+    public JwtTokenProvider(JwtProperties props) {}
 
     public String createToken(Long userId, String email, String role) {
         return "dummy-token";
@@ -25,13 +22,34 @@ public class JwtTokenProvider {
         return new ClaimsWrapper();
     }
 
+    // ----- Fake JWT Claims -----
     public static class ClaimsWrapper {
-        public java.util.Map<String, Object> getBody() {
-            java.util.Map<String, Object> map = new java.util.HashMap<>();
-            map.put("userId", 0);
-            map.put("email", "");
-            map.put("role", "");
-            return map;
+
+        private final Map<String, Object> data = new HashMap<>();
+
+        public ClaimsWrapper() {
+            data.put("userId", 11);
+            data.put("email", "c@d.com");
+        }
+
+        public Body getBody() {
+            return new Body(data);
+        }
+    }
+
+    public static class Body {
+        private final Map<String, Object> map;
+
+        public Body(Map<String, Object> map) {
+            this.map = map;
+        }
+
+        public <T> T get(String key, Class<T> clazz) {
+            return clazz.cast(map.get(key));
+        }
+
+        public Object get(String key) {
+            return map.get(key);
         }
     }
 }
