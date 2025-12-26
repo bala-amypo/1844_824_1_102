@@ -1,12 +1,12 @@
-// package com.example.demo.service;
+package com.example.demo.service;
 
-// import com.example.demo.entity.AlertLog;
-// import com.example.demo.repository.AlertLogRepository;
-// import org.springframework.stereotype.Service;
+import com.example.demo.entity.AlertLog;
+import com.example.demo.repository.AlertLogRepository;
+import org.springframework.stereotype.Service;
 
-// import java.util.List;
+import java.util.List;
 
-// @Service
+@Service
 // public class AlertLogService {
 
 //     private final AlertLogRepository repo;
