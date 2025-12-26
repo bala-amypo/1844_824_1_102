@@ -1,11 +1,11 @@
-package com.example.demo.service;
+// package com.example.demo.service;
 
-import com.example.demo.entity.AlertSchedule;
-import java.util.List;
+// import com.example.demo.entity.AlertSchedule;
+// import java.util.List;
 
-public interface AlertScheduleService {
+// public interface AlertScheduleService {
 
-    AlertSchedule createSchedule(Long warrantyId, AlertSchedule schedule);
-    List<AlertSchedule> getAllSchedules();
-    AlertSchedule getScheduleById(Long id);
-}
+//     AlertSchedule createSchedule(Long warrantyId, AlertSchedule schedule);
+//     List<AlertSchedule> getAllSchedules();
+//     AlertSchedule getScheduleById(Long id);
+// }

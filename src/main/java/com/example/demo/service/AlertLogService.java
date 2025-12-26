@@ -1,11 +1,11 @@
-package com.example.demo.service;
+// package com.example.demo.service;
 
-import com.example.demo.entity.AlertLog;
-import java.util.List;
+// import com.example.demo.entity.AlertLog;
+// import java.util.List;
 
-public interface AlertLogService {
+// public interface AlertLogService {
 
-    AlertLog createAlert(AlertLog alert);
-    List<AlertLog> getAllAlerts();
-    AlertLog getAlertById(Long id);
-}
+//     AlertLog createAlert(AlertLog alert);
+//     List<AlertLog> getAllAlerts();
+//     AlertLog getAlertById(Long id);
+// }
