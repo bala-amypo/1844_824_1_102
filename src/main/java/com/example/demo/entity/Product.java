@@ -1,17 +1,8 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-@Entity
 public class Product {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String brand;
     private String modelNumber;
@@ -27,19 +18,37 @@ public class Product {
         this.category = category;
     }
 
-    // getters & setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    // getters & setters (only needed ones)
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public static Builder builder() {
+        return new Builder();
+    }
 
-    public String getBrand() { return brand; }
-    public void setBrand(String brand) { this.brand = brand; }
+    public static class Builder {
+        private final Product p = new Product();
 
-    public String getModelNumber() { return modelNumber; }
-    public void setModelNumber(String modelNumber) { this.modelNumber = modelNumber; }
+        public Builder name(String name) {
+            p.name = name;
+            return this;
+        }
 
-    public String getCategory() { return category; }
-    public void setCategory(String category) { this.category = category; }
+        public Builder brand(String brand) {
+            p.brand = brand;
+            return this;
+        }
+
+        public Builder modelNumber(String modelNumber) {
+            p.modelNumber = modelNumber;
+            return this;
+        }
+
+        public Builder category(String category) {
+            p.category = category;
+            return this;
+        }
+
+        public Product build() {
+            return p;
+        }
+    }
 }
