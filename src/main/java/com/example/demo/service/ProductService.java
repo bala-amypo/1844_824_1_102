@@ -1,10 +1,11 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Product;
+import java.util.List;
 
 public interface ProductService {
 
     Product addProduct(Product product);
 
-    Product getProductById(Long id);
+    List<Product> getAllProducts();   // 🔥 ADD THIS
 }
