@@ -13,7 +13,9 @@ public class Warranty {
 
     private String serialNumber;
 
-    // ✅ THIS FIELD IS REQUIRED
+    // Add this field
+    private LocalDate purchaseDate; 
+
     private LocalDate expiryDate;
 
     @ManyToOne
@@ -40,6 +42,16 @@ public class Warranty {
 
     public void setSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
+    }
+
+    // Add this getter
+    public LocalDate getPurchaseDate() {
+        return purchaseDate;
+    }
+
+    // Add this setter
+    public void setPurchaseDate(LocalDate purchaseDate) {
+        this.purchaseDate = purchaseDate;
     }
 
     public LocalDate getExpiryDate() {
