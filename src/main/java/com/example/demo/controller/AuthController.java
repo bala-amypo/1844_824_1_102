@@ -54,12 +54,12 @@ import com.example.demo.service.UserService;
 
 @RestController
 @RequestMapping("/auth")
-public class UserController {
+public class AuthController {
 
-    private final UserService service;
+    private final AuthService service;
 
     @Autowired
-    public UserController(UserService service) {
+    public AuthController(UserService service) {
         this.service = service;
     }
 
