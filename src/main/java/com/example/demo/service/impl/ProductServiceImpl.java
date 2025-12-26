@@ -2,26 +2,26 @@ package com.example.demo.service.impl;
 
 import com.example.demo.entity.Product;
 import com.example.demo.repository.ProductRepository;
-import java.util.List;
+import com.example.demo.service.ProductService;
+import org.springframework.stereotype.Service;
 
-public class ProductServiceImpl {
+@Service
+public class ProductServiceImpl implements ProductService {
+
     private final ProductRepository productRepository;
 
     public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
+    @Override
     public Product addProduct(Product product) {
-        if (product.getModelNumber() == null || product.getModelNumber().isEmpty()) {
-            throw new IllegalArgumentException("Model number required");
-        }
-        if (product.getCategory() == null || product.getCategory().isEmpty()) {
-            throw new IllegalArgumentException("Category required");
-        }
         return productRepository.save(product);
     }
 
-    public List<Product> getAllProducts() {
-        return productRepository.findAll();
+    @Override
+    public Product getProductById(Long id) {
+        return productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Product not found"));
     }
 }

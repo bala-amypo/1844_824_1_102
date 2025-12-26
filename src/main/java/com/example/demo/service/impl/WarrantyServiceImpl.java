@@ -1,51 +1,46 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.Warranty;
-import com.example.demo.entity.User;
-import com.example.demo.entity.Product;
 import com.example.demo.repository.WarrantyRepository;
-import com.example.demo.repository.UserRepository;
-import com.example.demo.repository.ProductRepository;
+import com.example.demo.service.WarrantyService;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 import java.util.List;
 
-public class WarrantyServiceImpl {
-    private final WarrantyRepository warrantyRepository;
-    private final UserRepository userRepository;
-    private final ProductRepository productRepository;
+@Service
+public class WarrantyServiceImpl implements WarrantyService {
 
-    public WarrantyServiceImpl(WarrantyRepository warrantyRepository, 
-                              UserRepository userRepository, 
-                              ProductRepository productRepository) {
+    private final WarrantyRepository warrantyRepository;
+
+    public WarrantyServiceImpl(WarrantyRepository warrantyRepository) {
         this.warrantyRepository = warrantyRepository;
-        this.userRepository = userRepository;
-        this.productRepository = productRepository;
     }
 
-    public Warranty registerWarranty(Long userId, Long productId, Warranty warranty) {
-        User user = userRepository.findById(userId)
-            .orElseThrow(() -> new RuntimeException("User not found"));
-        Product product = productRepository.findById(productId)
-            .orElseThrow(() -> new RuntimeException("Product not found"));
+    @Override
+    public Warranty addWarranty(Warranty warranty) {
 
-        if (!warranty.getExpiryDate().isAfter(warranty.getPurchaseDate())) {
-            throw new IllegalArgumentException("Expiry date must be after purchase date");
-        }
-
+        // Duplicate serial number check
         if (warrantyRepository.existsBySerialNumber(warranty.getSerialNumber())) {
-            throw new IllegalArgumentException("Serial number must be unique");
+            throw new IllegalArgumentException("Warranty with serial number already exists");
         }
 
-        warranty.setUser(user);
-        warranty.setProduct(product);
         return warrantyRepository.save(warranty);
     }
 
-    public List<Warranty> getUserWarranties(Long userId) {
+    @Override
+    public Warranty getWarrantyById(Long id) {
+        return warrantyRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Warranty not found"));
+    }
+
+    @Override
+    public List<Warranty> getWarrantiesByUser(Long userId) {
         return warrantyRepository.findByUserId(userId);
     }
 
-    public Warranty getWarranty(Long id) {
-        return warrantyRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Warranty not found"));
+    @Override
+    public List<Warranty> getWarrantiesExpiringBetween(LocalDate start, LocalDate end) {
+        return warrantyRepository.findWarrantiesExpiringBetween(start, end);
     }
 }

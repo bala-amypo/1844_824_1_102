@@ -1,37 +1,28 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.AlertSchedule;
-import com.example.demo.entity.Warranty;
 import com.example.demo.repository.AlertScheduleRepository;
-import com.example.demo.repository.WarrantyRepository;
+import com.example.demo.service.AlertScheduleService;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-public class AlertScheduleServiceImpl {
-    private final AlertScheduleRepository scheduleRepository;
-    private final WarrantyRepository warrantyRepository;
+@Service
+public class AlertScheduleServiceImpl implements AlertScheduleService {
 
-    public AlertScheduleServiceImpl(AlertScheduleRepository scheduleRepository, 
-                                   WarrantyRepository warrantyRepository) {
-        this.scheduleRepository = scheduleRepository;
-        this.warrantyRepository = warrantyRepository;
+    private final AlertScheduleRepository alertScheduleRepository;
+
+    public AlertScheduleServiceImpl(AlertScheduleRepository alertScheduleRepository) {
+        this.alertScheduleRepository = alertScheduleRepository;
     }
 
-    public AlertSchedule createSchedule(Long warrantyId, AlertSchedule schedule) {
-        Warranty warranty = warrantyRepository.findById(warrantyId)
-            .orElseThrow(() -> new RuntimeException("Warranty not found"));
-
-        if (schedule.getDaysBeforeExpiry() < 0) {
-            throw new IllegalArgumentException("daysBeforeExpiry must be non-negative");
-        }
-
-        schedule.setWarranty(warranty);
-        return scheduleRepository.save(schedule);
+    @Override
+    public AlertSchedule addSchedule(AlertSchedule schedule) {
+        return alertScheduleRepository.save(schedule);
     }
 
-    public List<AlertSchedule> getSchedules(Long warrantyId) {
-        if (!warrantyRepository.findById(warrantyId).isPresent()) {
-            throw new RuntimeException("Warranty not found");
-        }
-        return scheduleRepository.findByWarrantyId(warrantyId);
+    @Override
+    public List<AlertSchedule> getSchedulesByWarranty(Long warrantyId) {
+        return alertScheduleRepository.findByWarrantyId(warrantyId);
     }
 }

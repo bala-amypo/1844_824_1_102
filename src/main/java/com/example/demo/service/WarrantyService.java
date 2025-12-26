@@ -1,14 +1,17 @@
-// package com.example.demo.service.impl;
+package com.example.demo.service;
 
-// import org.springframework.stereotype.Service;
-// import com.example.demo.service.AuthService;
+import com.example.demo.entity.Warranty;
 
-// @Service
-// public class AuthServiceImpl implements AuthService {
+import java.time.LocalDate;
+import java.util.List;
 
-//     @Override
-//     public boolean login(String username, String password) {
-//         // dummy login
-//         return username.equals("admin") && password.equals("admin");
-//     }
-// }
+public interface WarrantyService {
+
+    Warranty addWarranty(Warranty warranty);
+
+    Warranty getWarrantyById(Long id);
+
+    List<Warranty> getWarrantiesByUser(Long userId);
+
+    List<Warranty> getWarrantiesExpiringBetween(LocalDate start, LocalDate end);
+}
