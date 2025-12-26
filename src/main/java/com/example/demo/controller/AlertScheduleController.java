@@ -1,73 +1,34 @@
-// package com.example.demo.controller;
-// import org.springframework.web.bind.annotation.*;
-// import java.util.List;
-// import com.example.demo.entity.AlertSchedule;
-// import com.example.demo.service.AlertScheduleService;
-
-// @RestController
-// @RequestMapping("/alertSchedule")
-// public class AlertScheduleController {
-
-//     private final AlertScheduleService service;
-
-//     public AlertScheduleController(AlertScheduleService service) {
-//         this.service = service;
-//     }
-
-    
-//     @PostMapping
-//     public AlertSchedule create(@RequestBody AlertSchedule schedule) {
-//         return service.save(schedule);
-//     }
-
-    
-//     @GetMapping
-//     public List<AlertSchedule> getAll() {
-//         return service.getAll();
-//     }
-
-    
-//     @GetMapping("/{id}")
-//     public AlertSchedule getById(@PathVariable Long id) {
-//         return service.getById(id);
-//     }
-
-   
-//     @DeleteMapping("/{id}")
-//     public String delete(@PathVariable Long id) {
-//         return service.delete(id);
-//     }
-// }
-
 package com.example.demo.controller;
-
-import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.demo.entity.AlertSchedule;
 import com.example.demo.service.AlertScheduleService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/schedules")
+@Tag(name = "Alert Schedules")
 public class AlertScheduleController {
 
-    private final AlertScheduleService service;
+    private final AlertScheduleService scheduleService;
 
-    @Autowired
-    public AlertScheduleController(AlertScheduleService service) {
-        this.service = service;
+    public AlertScheduleController(AlertScheduleService scheduleService) {
+        this.scheduleService = scheduleService;
     }
 
-    @PostMapping("/create")
-    public AlertSchedule create(@RequestBody AlertSchedule schedule) {
-        return service.createSchedule(schedule);
+    @PostMapping("/{warrantyId}")
+    @Operation(summary = "Create alert schedule for a warranty")
+    public AlertSchedule createSchedule(
+            @PathVariable Long warrantyId,
+            @RequestBody AlertSchedule schedule) {
+        return scheduleService.createSchedule(warrantyId, schedule);
     }
 
-    @GetMapping("/{warranty}")
-    public List<AlertSchedule> getSchedules(@PathVariable String warranty) {
-        return service.getSchedules(warranty);
+    @GetMapping("/{warrantyId}")
+    @Operation(summary = "Get alert schedules for a warranty")
+    public List<AlertSchedule> getSchedules(@PathVariable Long warrantyId) {
+        return scheduleService.getSchedules(warrantyId);
     }
 }
-

@@ -1,39 +1,41 @@
-
-
 package com.example.demo.controller;
-
-import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.demo.entity.Warranty;
 import com.example.demo.service.WarrantyService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/warranties")
+@Tag(name = "Warranties")
 public class WarrantyController {
 
-    private final WarrantyService service;
+    private final WarrantyService warrantyService;
 
-    @Autowired
-    public WarrantyController(WarrantyService service) {
-        this.service = service;
+    public WarrantyController(WarrantyService warrantyService) {
+        this.warrantyService = warrantyService;
     }
 
-    @PostMapping("/register")
-    public Warranty register(@RequestBody Warranty warranty) {
-        return service.registerWarranty(warranty);
+    @PostMapping("/register/{userId}/{productId}")
+    @Operation(summary = "Register warranty for a user and product")
+    public Warranty registerWarranty(
+            @PathVariable Long userId,
+            @PathVariable Long productId,
+            @RequestBody Warranty warranty) {
+        return warrantyService.registerWarranty(userId, productId, warranty);
     }
 
-    @GetMapping("/{id}")
-    public Warranty getWarranty(@PathVariable Long id) {
-        return service.getWarranty(id);
+    @GetMapping("/{warrantyId}")
+    @Operation(summary = "Get warranty by ID")
+    public Warranty getWarranty(@PathVariable Long warrantyId) {
+        return warrantyService.getWarranty(warrantyId);
     }
 
-    @GetMapping("/user/{user}")
-    public List<Warranty> getUserWarranties(@PathVariable String user) {
-        return service.getUserWarranties(user);
+    @GetMapping("/user/{userId}")
+    @Operation(summary = "Get all warranties for a user")
+    public List<Warranty> getUserWarranties(@PathVariable Long userId) {
+        return warrantyService.getUserWarranties(userId);
     }
 }
-
