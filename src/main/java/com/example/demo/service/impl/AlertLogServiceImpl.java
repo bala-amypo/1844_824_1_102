@@ -1,10 +1,10 @@
-package com.example.demo.service;
+package com.example.demo.service.impl;
 
 import com.example.demo.entity.AlertLog;
 import com.example.demo.repository.AlertLogRepository;
+import com.example.demo.service.AlertLogService;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -17,16 +17,17 @@ public class AlertLogServiceImpl implements AlertLogService {
     }
 
     @Override
-    public AlertLog addLog(Long warrantyId, String message) {
-        AlertLog log = new AlertLog();
-        log.setwarranty(warrantyId.toString());
-        log.setmessage(message);
-        log.setsentAt(LocalDateTime.now());
-        return alertLogRepository.save(log);
+    public AlertLog createAlert(AlertLog alert) {
+        return alertLogRepository.save(alert);
     }
 
     @Override
-    public List<AlertLog> getLogs(Long warrantyId) {
-        return alertLogRepository.findByWarranty(warrantyId.toString());
+    public List<AlertLog> getAllAlerts() {
+        return alertLogRepository.findAll();
+    }
+
+    @Override
+    public AlertLog getAlertById(Long id) {
+        return alertLogRepository.findById(id).orElse(null);
     }
 }
