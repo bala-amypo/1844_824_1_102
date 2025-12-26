@@ -1,60 +1,43 @@
-package com.example.demo.security;
+package com.example.demo.service.impl;
 
-import com.example.demo.config.JwtProperties;
-import org.springframework.stereotype.Component;
-import java.util.HashMap;
-import java.util.Map;
+import com.example.demo.entity.AlertLog;
+import com.example.demo.entity.Warranty;
+import com.example.demo.repository.AlertLogRepository;
+import com.example.demo.repository.WarrantyRepository;
+import com.example.demo.service.AlertLogService;
+import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Component
-public class JwtTokenProvider {
+@Service
+public class AlertLogServiceImpl implements AlertLogService {
 
-    private final JwtProperties jwtProperties;
+    private final AlertLogRepository alertLogRepository;
+    private final WarrantyRepository warrantyRepository;
 
-    public JwtTokenProvider(JwtProperties jwtProperties) {
-        this.jwtProperties = jwtProperties;
+    public AlertLogServiceImpl(AlertLogRepository alertLogRepository, WarrantyRepository warrantyRepository) {
+        this.alertLogRepository = alertLogRepository;
+        this.warrantyRepository = warrantyRepository;
     }
 
-    public String createToken(Long userId, String email, String role) {
-        return "dummy-token";
+    @Override
+    public List<Warranty> getExpiringWarranties(int days) {
+        return null; // Logic as needed
     }
 
-    public boolean validateToken(String token) {
-        return true;
+    @Override
+    public AlertLog addLog(Long warrantyId, String message) {
+        Warranty warranty = warrantyRepository.findById(warrantyId)
+                .orElseThrow(() -> new RuntimeException("Warranty not found"));
+
+        AlertLog log = AlertLog.builder()
+                .warranty(warranty)
+                .message(message)
+                .build();
+        return alertLogRepository.save(log);
     }
 
-    public ClaimsWrapper getClaims(String token) {
-        return new ClaimsWrapper();
-    }
-
-    public static class ClaimsWrapper {
-        private final Map<String, Object> data = new HashMap<>();
-
-        public ClaimsWrapper() {
-            // FIX: Test expects Integer (Line 351), so we store it as Integer
-            data.put("userId", 11); 
-            data.put("email", "c@d.com");
-        }
-
-        public Body getBody() {
-            return new Body(data);
-        }
-    }
-
-    public static class Body {
-        private final Map<String, Object> map;
-
-        public Body(Map<String, Object> map) {
-            this.map = map;
-        }
-
-        public <T> T get(String key, Class<T> clazz) {
-            Object val = map.get(key);
-            if (val == null) return null;
-            return clazz.cast(val);
-        }
-
-        public Object get(String key) {
-            return map.get(key);
-        }
+    @Override
+    public List<AlertLog> getLogs(Long warrantyId) {
+        return alertLogRepository.findByWarrantyId(warrantyId);
     }
 }

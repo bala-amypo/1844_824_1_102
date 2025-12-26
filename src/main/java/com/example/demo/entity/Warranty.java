@@ -9,14 +9,13 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "warranties")
 public class Warranty {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String serialNumber;
-    private LocalDate purchaseDate; 
+    private LocalDate purchaseDate;
     private LocalDate expiryDate;
 
     @ManyToOne
