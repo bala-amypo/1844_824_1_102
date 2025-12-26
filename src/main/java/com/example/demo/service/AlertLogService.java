@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface AlertLogService {
 
-    AlertLog createAlert(String message, Long userId, Long requestId);
+    AlertLog createAlert(AlertLog alert);
 
-    List<AlertLog> getAlertsByUser(Long userId);
+    List<AlertLog> getAllAlerts();
 
-    List<AlertLog> getAlertsByRequest(Long requestId);
+    AlertLog getAlertById(Long id);
 }
