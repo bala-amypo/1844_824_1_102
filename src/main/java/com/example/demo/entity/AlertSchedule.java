@@ -19,6 +19,7 @@ public class AlertSchedule {
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -26,6 +27,8 @@ public class AlertSchedule {
     public String getWarranty() {
         return warranty;
     }
+
+    // FIXED
     public void setWarranty(String warranty) {
         this.warranty = warranty;
     }
@@ -33,6 +36,7 @@ public class AlertSchedule {
     public int getDaysBeforeExpiry() {
         return daysBeforeExpiry;
     }
+
     public void setDaysBeforeExpiry(int daysBeforeExpiry) {
         this.daysBeforeExpiry = daysBeforeExpiry;
     }
@@ -40,6 +44,7 @@ public class AlertSchedule {
     public Boolean getEnabled() {
         return enabled;
     }
+
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
@@ -51,6 +56,6 @@ public class AlertSchedule {
         this.enabled = enabled;
     }
 
-   
-    public AlertSchedule() {}
+    public AlertSchedule() {
+    }
 }

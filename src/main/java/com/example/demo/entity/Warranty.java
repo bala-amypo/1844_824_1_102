@@ -1,4 +1,5 @@
 package com.example.demo.entity;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -18,10 +19,10 @@ public class Warranty {
     private LocalDateTime expiryDate;
     private String serialNumber;
 
-   
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -29,6 +30,8 @@ public class Warranty {
     public String getUser() {
         return user;
     }
+
+    // FIXED
     public void setUser(String user) {
         this.user = user;
     }
@@ -36,6 +39,8 @@ public class Warranty {
     public String getProduct() {
         return product;
     }
+
+    // FIXED
     public void setProduct(String product) {
         this.product = product;
     }
@@ -43,6 +48,7 @@ public class Warranty {
     public LocalDateTime getPurchaseDate() {
         return purchaseDate;
     }
+
     public void setPurchaseDate(LocalDateTime purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
@@ -50,6 +56,7 @@ public class Warranty {
     public LocalDateTime getExpiryDate() {
         return expiryDate;
     }
+
     public void setExpiryDate(LocalDateTime expiryDate) {
         this.expiryDate = expiryDate;
     }
@@ -57,13 +64,14 @@ public class Warranty {
     public String getSerialNumber() {
         return serialNumber;
     }
+
     public void setSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
     }
 
-   
-    public Warranty(Long id, String user, String product, LocalDateTime purchaseDate,
-                    LocalDateTime expiryDate, String serialNumber) {
+    public Warranty(Long id, String user, String product,
+                    LocalDateTime purchaseDate, LocalDateTime expiryDate,
+                    String serialNumber) {
         this.id = id;
         this.user = user;
         this.product = product;
@@ -72,6 +80,6 @@ public class Warranty {
         this.serialNumber = serialNumber;
     }
 
-    
-    public Warranty() {}
+    public Warranty() {
+    }
 }
