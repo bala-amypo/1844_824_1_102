@@ -1,9 +1,8 @@
 package com.example.demo.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import com.example.demo.entity.AlertLog;
 import com.example.demo.repository.AlertLogRepository;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,23 +10,23 @@ import java.util.List;
 @Service
 public class AlertLogServiceImpl implements AlertLogService {
 
-    @Autowired
-    private AlertLogRepository alertLogRepository;
+    private final AlertLogRepository alertLogRepository;
 
-    @Override
-    public AlertLog createAlert(AlertLog alert) {
-        alert.setsentAt(LocalDateTime.now());
-        return alertLogRepository.save(alert);
+    public AlertLogServiceImpl(AlertLogRepository alertLogRepository) {
+        this.alertLogRepository = alertLogRepository;
     }
 
     @Override
-    public List<AlertLog> getAllAlerts() {
-        return alertLogRepository.findAll();
+    public AlertLog addLog(Long warrantyId, String message) {
+        AlertLog log = new AlertLog();
+        log.setwarranty(warrantyId.toString());
+        log.setmessage(message);
+        log.setsentAt(LocalDateTime.now());
+        return alertLogRepository.save(log);
     }
 
     @Override
-    public AlertLog getAlertById(Long id) {
-        return alertLogRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Alert Not Found"));
+    public List<AlertLog> getLogs(Long warrantyId) {
+        return alertLogRepository.findByWarranty(warrantyId.toString());
     }
 }

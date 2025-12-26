@@ -4,10 +4,6 @@ import com.example.demo.entity.AlertLog;
 import java.util.List;
 
 public interface AlertLogService {
-
-    AlertLog createAlert(AlertLog alert);
-
-    List<AlertLog> getAllAlerts();
-
-    AlertLog getAlertById(Long id);
+    AlertLog addLog(Long warrantyId, String message);
+    List<AlertLog> getLogs(Long warrantyId);
 }
