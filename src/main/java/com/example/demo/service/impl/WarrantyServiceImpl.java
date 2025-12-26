@@ -1,50 +1,36 @@
 package com.example.demo.service;
 
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.example.demo.entity.Warranty;
 import com.example.demo.repository.WarrantyRepository;
+import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 public class WarrantyServiceImpl implements WarrantyService {
 
-    private final WarrantyRepository repo;
+    private final WarrantyRepository warrantyRepository;
 
-    @Autowired
-    public WarrantyServiceImpl(WarrantyRepository repo) {
-        this.repo = repo;
+    public WarrantyServiceImpl(WarrantyRepository warrantyRepository) {
+        this.warrantyRepository = warrantyRepository;
     }
 
     @Override
-    public Warranty registerWarranty(Warranty warranty) {
+    public Warranty registerWarranty(Long userId, Long productId, Warranty warranty) {
+        // you can set user and product if they are strings
+        warranty.setuser(userId.toString());
+        warranty.setproduct(productId.toString());
 
-        // Rule 1: Serial number must be unique
-        if (repo.existsBySerialNumber(warranty.getserialNumber())) {
-            throw new RuntimeException("Serial number must be unique");
-        }
-
-        // Rule 2: Expiry > Purchase date
-        LocalDateTime purchase = warranty.getpurchaseDate();
-        LocalDateTime expiry = warranty.getexpiryDate();
-
-        if (expiry.isBefore(purchase)) {
-            throw new RuntimeException("Expiry date must be after purchase date");
-        }
-
-        return repo.save(warranty);
+        return warrantyRepository.save(warranty);
     }
 
     @Override
-    public Warranty getWarranty(Long id) {
-        return repo.findById(id).orElse(null);
+    public Warranty getWarranty(Long warrantyId) {
+        return warrantyRepository.findById(warrantyId).orElse(null);
     }
 
     @Override
-    public List<Warranty> getUserWarranties(String user) {
-        return repo.findByUser(user);
+    public List<Warranty> getUserWarranties(Long userId) {
+        return warrantyRepository.findByUser(userId.toString());
     }
 }
