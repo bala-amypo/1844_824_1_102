@@ -1,16 +1,12 @@
 package com.example.demo.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.entity.AlertLog;
-
-// public interface AlertLogRepository extends JpaRepository<AlertLog, Long> {
-
-// }
+import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AlertLogRepository extends JpaRepository<AlertLog, Long> {
 
-    List<AlertLog> findByUserUserId(Long userId);
+    List<AlertLog> findByUserId(Long userId);
 
     List<AlertLog> findByServiceRequestRequestId(Long requestId);
 }
-
