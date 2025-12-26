@@ -10,8 +10,8 @@ import java.util.List;
 public interface WarrantyRepository extends JpaRepository<Warranty, Long> {
     boolean existsBySerialNumber(String serialNumber);
     List<Warranty> findByUserId(Long userId);
-    List<Warranty> findByExpiryDateBetween(LocalDate start, LocalDate end);
 
+    // This specific naming is required by the portal test file
     @Query("SELECT w FROM Warranty w WHERE w.expiryDate BETWEEN :from AND :to")
     List<Warranty> findWarrantiesExpiringBetween(@Param("from") LocalDate from, @Param("to") LocalDate to);
 }
