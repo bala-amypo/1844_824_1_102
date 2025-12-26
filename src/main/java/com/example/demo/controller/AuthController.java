@@ -8,8 +8,10 @@ import com.example.demo.security.JwtTokenProvider;
 import com.example.demo.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
 @RestController
 @RequestMapping("/auth")
 @Tag(name = "Authentication")
@@ -19,9 +21,7 @@ public class AuthController {
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
 
-    public AuthController(UserService userService,
-                          PasswordEncoder passwordEncoder,
-                          JwtTokenProvider jwtTokenProvider) {
+    public AuthController(UserService userService, PasswordEncoder passwordEncoder, JwtTokenProvider jwtTokenProvider) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
         this.jwtTokenProvider = jwtTokenProvider;
@@ -29,39 +29,30 @@ public class AuthController {
 
     @PostMapping("/register")
     @Operation(summary = "Register a new user")
-    public User register(@RequestBody RegisterRequest request) {
-
+    public ResponseEntity<User> register(@RequestBody RegisterRequest request) {
         User user = User.builder()
                 .name(request.getName())
                 .email(request.getEmail())
-                .password(request.getPassword()) // hashing done in service
+                .password(request.getPassword())
                 .role(request.getRole())
                 .build();
 
-        return userService.register(user);
+        User saved = userService.register(user);
+        return ResponseEntity.ok(saved);
     }
 
     @PostMapping("/login")
-    @Operation(summary = "Login user and return JWT")
-    public AuthResponse login(@RequestBody AuthRequest request) {
-
+    @Operation(summary = "Authenticate user and generate JWT")
+    public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest request) {
         User user = userService.findByEmail(request.getEmail());
 
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            throw new RuntimeException("Invalid credentials");
+            throw new IllegalArgumentException("Invalid credentials");
         }
 
-        String token = jwtTokenProvider.generateToken(
-                user.getId(),
-                user.getEmail(),
-                user.getRole()
-        );
+        String token = jwtTokenProvider.createToken(user.getId(), user.getEmail(), user.getRole());
 
-        return new AuthResponse(
-                token,
-                user.getId(),
-                user.getEmail(),
-                user.getRole()
-        );
+        AuthResponse response = new AuthResponse(token, user.getId(), user.getEmail(), user.getRole());
+        return ResponseEntity.ok(response);
     }
 }
