@@ -1,33 +1,32 @@
-
-
 package com.example.demo.controller;
-
-import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.demo.entity.Product;
 import com.example.demo.service.ProductService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/products")
+@Tag(name = "Products")
 public class ProductController {
 
-    private final ProductService service;
+    private final ProductService productService;
 
-    @Autowired
-    public ProductController(ProductService service) {
-        this.service = service;
+    public ProductController(ProductService productService) {
+        this.productService = productService;
     }
 
-    @PostMapping("/add")
+    @PostMapping
+    @Operation(summary = "Add a new product")
     public Product addProduct(@RequestBody Product product) {
-        return service.addProduct(product);
+        return productService.addProduct(product);
     }
 
-    @GetMapping("/list")
-    public List<Product> listProducts() {
-        return service.getAllProducts();
+    @GetMapping
+    @Operation(summary = "Get all products")
+    public List<Product> getAllProducts() {
+        return productService.getAllProducts();
     }
 }
