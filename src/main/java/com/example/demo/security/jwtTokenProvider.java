@@ -2,22 +2,22 @@ package com.example.demo.security;
 
 import com.example.demo.config.JwtProperties;
 import io.jsonwebtoken.*;
-import io.jsonwebtoken.security.Keys;
-import javax.crypto.SecretKey;
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 
+@Component
 public class JwtTokenProvider {
-    private final JwtProperties jwtProperties;
-    private final SecretKey key;
 
-    public JwtTokenProvider(JwtProperties jwtProperties) {
-        this.jwtProperties = jwtProperties;
-        this.key = Keys.hmacShaKeyFor(jwtProperties.getSecret().getBytes());
+    private final JwtProperties properties;
+
+    public JwtTokenProvider(JwtProperties properties) {
+        this.properties = properties;
     }
 
     public String createToken(Long userId, String email, String role) {
         Date now = new Date();
-        Date expiry = new Date(now.getTime() + jwtProperties.getExpirationMs());
+        Date expiry = new Date(now.getTime() + properties.getExpirationMs());
 
         return Jwts.builder()
                 .claim("userId", userId)
@@ -25,20 +25,25 @@ public class JwtTokenProvider {
                 .claim("role", role)
                 .setIssuedAt(now)
                 .setExpiration(expiry)
-                .signWith(key)
+                .signWith(SignatureAlgorithm.HS256, properties.getSecret())
                 .compact();
     }
 
     public boolean validateToken(String token) {
         try {
-            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
+            Jwts.parser()
+                    .setSigningKey(properties.getSecret())
+                    .parseClaimsJws(token);
             return true;
         } catch (JwtException | IllegalArgumentException e) {
             return false;
         }
     }
 
-    public Jws<Claims> getClaims(String token) {
-        return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
+    public Claims getClaims(String token) {
+        return Jwts.parser()
+                .setSigningKey(properties.getSecret())
+                .parseClaimsJws(token)
+                .getBody();
     }
 }
