@@ -8,5 +8,12 @@ import java.util.List;
 
 public interface WarrantyRepository extends JpaRepository<Warranty, Long> {
 
+    // ✅ required by WarrantyServiceImpl
+    boolean existsBySerialNumber(String serialNumber);
+
+    // ✅ required by WarrantyServiceImpl & tests
+    List<Warranty> findByUserId(Long userId);
+
+    // ✅ required by tests (already discussed)
     List<Warranty> findWarrantiesExpiringBetween(LocalDate from, LocalDate to);
 }

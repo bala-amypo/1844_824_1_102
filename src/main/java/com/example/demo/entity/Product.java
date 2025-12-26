@@ -18,7 +18,25 @@ public class Product {
         this.category = category;
     }
 
-    // getters & setters (only needed ones)
+    // ✅ REQUIRED GETTERS
+    public String getModelNumber() {
+        return modelNumber;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    // setters (minimal)
+    public void setModelNumber(String modelNumber) {
+        this.modelNumber = modelNumber;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    /* ---------- builder (already required by tests) ---------- */
 
     public static Builder builder() {
         return new Builder();
