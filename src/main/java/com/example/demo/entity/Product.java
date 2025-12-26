@@ -18,7 +18,11 @@ public class Product {
         this.category = category;
     }
 
-    // ✅ REQUIRED GETTERS
+    // getters required by tests
+    public String getName() {
+        return name;
+    }
+
     public String getModelNumber() {
         return modelNumber;
     }
@@ -27,7 +31,11 @@ public class Product {
         return category;
     }
 
-    // setters (minimal)
+    // setters required by tests
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setModelNumber(String modelNumber) {
         this.modelNumber = modelNumber;
     }
@@ -36,8 +44,7 @@ public class Product {
         this.category = category;
     }
 
-    /* ---------- builder (already required by tests) ---------- */
-
+    // builder required by tests
     public static Builder builder() {
         return new Builder();
     }
