@@ -1,14 +1,29 @@
 package com.example.demo.entity;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "products")
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     private String brand;
+
+    @Column(nullable = false)
     private String modelNumber;
+
+    @Column(nullable = false)
     private String category;
 
-    public Product() {}
+    // -------- Constructors --------
+
+    public Product() {
+    }
 
     public Product(Long id, String name, String brand, String modelNumber, String category) {
         this.id = id;
@@ -18,62 +33,45 @@ public class Product {
         this.category = category;
     }
 
-    // getters required by tests
+    // -------- Getters & Setters --------
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public String getModelNumber() {
         return modelNumber;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    // setters required by tests
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setModelNumber(String modelNumber) {
         this.modelNumber = modelNumber;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    // builder required by tests
-    public static Builder builder() {
-        return new Builder();
-    }
-
-    public static class Builder {
-        private final Product p = new Product();
-
-        public Builder name(String name) {
-            p.name = name;
-            return this;
-        }
-
-        public Builder brand(String brand) {
-            p.brand = brand;
-            return this;
-        }
-
-        public Builder modelNumber(String modelNumber) {
-            p.modelNumber = modelNumber;
-            return this;
-        }
-
-        public Builder category(String category) {
-            p.category = category;
-            return this;
-        }
-
-        public Product build() {
-            return p;
-        }
     }
 }
