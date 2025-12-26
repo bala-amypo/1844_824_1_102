@@ -11,15 +11,9 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
-    // Required by Test Suite (one-arg constructor)
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = new BCryptPasswordEncoder();
-    }
-
-    // Required by Spring Boot Application (two-arg constructor)
+    // Consolidate into a single constructor for Spring to use
     public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
@@ -31,7 +25,9 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("email already exists");
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        if (user.getRole() == null) user.setRole("USER");
+        if (user.getRole() == null) {
+            user.setRole("USER");
+        }
         return userRepository.save(user);
     }
 
