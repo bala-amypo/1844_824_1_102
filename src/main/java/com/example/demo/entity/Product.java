@@ -17,6 +17,19 @@ public class Product {
     private String modelNumber;
     private String category;
 
+    // --- DEFAULT CONSTRUCTOR ---
+    public Product() {
+    }
+
+    // --- PARAMETERIZED CONSTRUCTOR (WITHOUT ID) ---
+    public Product(String name, String brand, String modelNumber, String category) {
+        this.name = name;
+        this.brand = brand;
+        this.modelNumber = modelNumber;
+        this.category = category;
+    }
+
+    // --- GETTERS & SETTERS ---
     public Long getId() {
         return id;
     }
@@ -55,16 +68,5 @@ public class Product {
 
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    public Product(Long id, String name, String brand, String modelNumber, String category) {
-        this.id = id;
-        this.name = name;
-        this.brand = brand;
-        this.modelNumber = modelNumber;
-        this.category = category;
-    }
-
-    public Product() {
     }
 }
