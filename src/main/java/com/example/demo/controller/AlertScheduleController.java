@@ -38,3 +38,36 @@
 //         return service.delete(id);
 //     }
 // }
+
+package com.example.demo.controller;
+
+import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.demo.entity.AlertSchedule;
+import com.example.demo.service.AlertScheduleService;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/schedules")
+public class AlertScheduleController {
+
+    private final AlertScheduleService service;
+
+    @Autowired
+    public AlertScheduleController(AlertScheduleService service) {
+        this.service = service;
+    }
+
+    @PostMapping("/create")
+    public AlertSchedule create(@RequestBody AlertSchedule schedule) {
+        return service.createSchedule(schedule);
+    }
+
+    @GetMapping("/{warranty}")
+    public List<AlertSchedule> getSchedules(@PathVariable String warranty) {
+        return service.getSchedules(warranty);
+    }
+}
+
