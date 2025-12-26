@@ -1,35 +1,39 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
-
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "alert_logs")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class AlertLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Many logs belong to one warranty
+    private String message;
+
+    // 1. Add this field
+    private LocalDate logDate;
+
     @ManyToOne
     @JoinColumn(name = "warranty_id")
     private Warranty warranty;
 
-    private LocalDateTime sentAt;
+    // ---------- Getters and Setters ----------
 
-    private String message;
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    // Automatically set timestamp before saving
-    @PrePersist
-    public void prePersist() {
-        this.sentAt = LocalDateTime.now();
-    }
+    public String getMessage() { return message; }
+    public void setMessage(String message) { this.message = message; }
+
+    // 2. Add this Getter
+    public LocalDate getLogDate() { return logDate; }
+
+    // 3. Add this Setter (This is what the error is looking for!)
+    public void setLogDate(LocalDate logDate) { this.logDate = logDate; }
+
+    public Warranty getWarranty() { return warranty; }
+    public void setWarranty(Warranty warranty) { this.warranty = warranty; }
 }
