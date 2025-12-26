@@ -1,18 +1,34 @@
 package com.example.demo.entity;
 
+import jakarta.persistence.*;
 import lombok.*;
+
 import java.time.LocalDateTime;
 
-@Data
-@Builder
+@Entity
+@Table(name = "alert_logs")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class AlertLog {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String message;
-    private LocalDateTime sentAt;
+
+    // Many logs belong to one warranty
+    @ManyToOne
+    @JoinColumn(name = "warranty_id")
     private Warranty warranty;
-    
+
+    private LocalDateTime sentAt;
+
+    private String message;
+
+    // Automatically set timestamp before saving
+    @PrePersist
     public void prePersist() {
         this.sentAt = LocalDateTime.now();
     }
