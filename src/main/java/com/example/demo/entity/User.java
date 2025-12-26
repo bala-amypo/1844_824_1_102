@@ -1,9 +1,9 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class User {
@@ -27,7 +27,40 @@ public class User {
         this.role = role;
     }
 
-    // getters & setters (REQUIRED – Lombok removed)
+    // ---------- Builder ----------
+    public static UserBuilder builder() {
+        return new UserBuilder();
+    }
+
+    public static class UserBuilder {
+        private final User u = new User();
+
+        public UserBuilder name(String name) {
+            u.setName(name);
+            return this;
+        }
+
+        public UserBuilder email(String email) {
+            u.setEmail(email);
+            return this;
+        }
+
+        public UserBuilder password(String password) {
+            u.setPassword(password);
+            return this;
+        }
+
+        public UserBuilder role(String role) {
+            u.setRole(role);
+            return this;
+        }
+
+        public User build() {
+            return u;
+        }
+    }
+
+    // ---------- Getters & Setters ----------
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
