@@ -1,46 +1,82 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
-@Table(name = "warranties")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class Warranty {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Many warranties belong to one user
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    // Many warranties belong to one product
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
-
     private LocalDate purchaseDate;
-
     private LocalDate expiryDate;
-
-    @Column(unique = true)
     private String serialNumber;
 
-    // One warranty can have many alert schedules
-    @OneToMany(mappedBy = "warranty", cascade = CascadeType.ALL)
-    private List<AlertSchedule> alertSchedules;
+    @ManyToOne
+    private User user;
 
-    // One warranty can have many alert logs
-    @OneToMany(mappedBy = "warranty", cascade = CascadeType.ALL)
-    private List<AlertLog> alertLogs;
+    @ManyToOne
+    private Product product;
+
+    public Warranty() {}
+
+    // builder-style factory (needed by tests)
+    public static WarrantyBuilder builder() {
+        return new WarrantyBuilder();
+    }
+
+    // getters & setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public LocalDate getPurchaseDate() { return purchaseDate; }
+    public void setPurchaseDate(LocalDate purchaseDate) { this.purchaseDate = purchaseDate; }
+
+    public LocalDate getExpiryDate() { return expiryDate; }
+    public void setExpiryDate(LocalDate expiryDate) { this.expiryDate = expiryDate; }
+
+    public String getSerialNumber() { return serialNumber; }
+    public void setSerialNumber(String serialNumber) { this.serialNumber = serialNumber; }
+
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
+
+    public Product getProduct() { return product; }
+    public void setProduct(Product product) { this.product = product; }
+
+    // ---------- Builder ----------
+    public static class WarrantyBuilder {
+        private final Warranty w = new Warranty();
+
+        public WarrantyBuilder purchaseDate(LocalDate d) {
+            w.setPurchaseDate(d);
+            return this;
+        }
+
+        public WarrantyBuilder expiryDate(LocalDate d) {
+            w.setExpiryDate(d);
+            return this;
+        }
+
+        public WarrantyBuilder serialNumber(String s) {
+            w.setSerialNumber(s);
+            return this;
+        }
+
+        public WarrantyBuilder user(User u) {
+            w.setUser(u);
+            return this;
+        }
+
+        public WarrantyBuilder product(Product p) {
+            w.setProduct(p);
+            return this;
+        }
+
+        public Warranty build() {
+            return w;
+        }
+    }
 }

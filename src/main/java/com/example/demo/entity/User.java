@@ -1,8 +1,17 @@
 package com.example.demo.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
+@Entity
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String email;
     private String password;
@@ -18,24 +27,7 @@ public class User {
         this.role = role;
     }
 
-    // ===== BUILDER =====
-    public static Builder builder() {
-        return new Builder();
-    }
-
-    public static class Builder {
-        private final User u = new User();
-
-        public Builder id(Long id) { u.setId(id); return this; }
-        public Builder name(String name) { u.setName(name); return this; }
-        public Builder email(String email) { u.setEmail(email); return this; }
-        public Builder password(String password) { u.setPassword(password); return this; }
-        public Builder role(String role) { u.setRole(role); return this; }
-
-        public User build() { return u; }
-    }
-
-    // ===== GETTERS & SETTERS =====
+    // getters & setters (REQUIRED – Lombok removed)
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
