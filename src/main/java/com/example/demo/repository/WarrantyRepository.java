@@ -1,7 +1,7 @@
 package com.example.demo.repository;
 
+import com.example.demo.model.Warranty;
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.example.demo.entity.Warranty;
 
 public interface WarrantyRepository extends JpaRepository<Warranty, Long> {
 }
