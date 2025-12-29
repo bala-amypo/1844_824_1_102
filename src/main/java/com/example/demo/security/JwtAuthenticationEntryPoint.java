@@ -1,10 +1,3 @@
-// package com.example.demo.security;
-
-// public class JwtAuthenticationEntryPoint {
-//     // empty on purpose
-// }
-
-
 package com.example.demo.security;
 
 import jakarta.servlet.ServletException;

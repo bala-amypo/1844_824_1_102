@@ -1,10 +1,3 @@
-// package com.example.demo.security;
-
-// public class CustomUserDetailsService {
-//     // empty on purpose
-// }
-
-
 package com.example.demo.security;
 
 import com.example.demo.entity.User;
