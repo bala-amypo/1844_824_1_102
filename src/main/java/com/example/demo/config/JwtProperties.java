@@ -1,12 +1,14 @@
 package com.example.demo.config;
 
-import org.springframework.stereotype.Component;
 import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 @Component
+@ConfigurationProperties(prefix = "jwt")
 @Data
+
 public class JwtProperties {
-    // These names must match the strings in Test suite reflection calls
-    private String secret = "12345678901234567890123456789012"; 
-    private Long expirationMs = 3600000L;
+    private String secret;
+    private long expirationMs;
 }
