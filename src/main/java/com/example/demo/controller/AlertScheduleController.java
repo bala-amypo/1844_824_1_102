@@ -2,8 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.AlertSchedule;
 import com.example.demo.service.AlertScheduleService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,28 +9,23 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/schedules")
-@Tag(name = "Alert Schedules")
+
 public class AlertScheduleController {
 
-    private final AlertScheduleService scheduleService;
+    private final AlertScheduleService alertScheduleService;
 
-    public AlertScheduleController(AlertScheduleService scheduleService) {
-        this.scheduleService = scheduleService;
+    public AlertScheduleController(AlertScheduleService alertScheduleService) {
+        this.alertScheduleService = alertScheduleService;
     }
 
-    @PostMapping("/{warrantyId}")
-    @Operation(summary = "Create alert schedule for a warranty")
-    public ResponseEntity<AlertSchedule> createSchedule(
-            @PathVariable Long warrantyId,
-            @RequestBody AlertSchedule schedule) {
-        AlertSchedule saved = scheduleService.createSchedule(warrantyId, schedule);
-        return ResponseEntity.ok(saved);
+    @PostMapping
+    public ResponseEntity<AlertSchedule> createSchedule(@RequestParam Long warrantyId,
+                                                        @RequestBody AlertSchedule schedule) {
+        return ResponseEntity.ok(alertScheduleService.createSchedule(warrantyId, schedule));
     }
 
-    @GetMapping("/{warrantyId}")
-    @Operation(summary = "Get all schedules for a warranty")
-    public ResponseEntity<List<AlertSchedule>> getSchedules(@PathVariable Long warrantyId) {
-        List<AlertSchedule> schedules = scheduleService.getSchedules(warrantyId);
-        return ResponseEntity.ok(schedules);
+    @GetMapping
+    public ResponseEntity<List<AlertSchedule>> getSchedules(@RequestParam Long warrantyId) {
+        return ResponseEntity.ok(alertScheduleService.getSchedules(warrantyId));
     }
 }
